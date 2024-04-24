@@ -1,5 +1,21 @@
-use core {printf}
+use core {iter, println, printf}
 
 main :: () {
   printf("Hello World\n");
+
+  sequence := i32.[5, 2, 9, 10, 11, 3, 5];
+
+  iter.as_iter(sequence)
+  |> iter.take(5)
+  |> iter.map(x => x * x)
+  |> iter.fold(0, (x, y) => x + y)
+  |> println();
+
+  sum := 0;
+  for value in sequence[0..5] {
+    square := value * value;
+    sum += square;
+  }
+
+  println(sum);
 }
